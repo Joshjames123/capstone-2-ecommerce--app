@@ -10,8 +10,8 @@
 	const port = process.env.PORT;
 
 //[SECTION] Server Setup
-	const app = express();
-	app.use(express.json());
+	const appj = express();
+	appj.use(express.json());
 	
 //[SECTION] Database Connection
 	mongoose.connect(account)
@@ -19,13 +19,13 @@
 	connectStatus.once('open', () => console.log(`Database Connected`));
 
 //[SECTION] Backend Routes
-	app.use('/users', userRoutes);
+	appj.use('/users', userRoutes);
 
 //[SECTION] Server Gateway Respose
-	app.get('/', (req, res) => {
+	appj.get('/', (req, res) => {
 		res.send('Welcome to Ecommers JBro')
 	});
 
-	app.listen(port, () => {
+	appj.listen(port, () => {
 		console.log(`API is Hosted port ${port}`);
 	});
