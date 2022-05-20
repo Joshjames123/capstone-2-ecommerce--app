@@ -23,7 +23,7 @@
 
 	//[SECTION] Server Gateway Respose
 	app.get('/', (req, res) => {
-		res.send('Welcome to Ecommers Application')
+		res.send('Welcome to Ecommers JBro')
 	});
 
 	app.listen(port, () => {
