@@ -2,7 +2,7 @@
 	const express = require('express');
 	const mongoose = require('mongoose');
 	const dotenv = require('dotenv');
-	const userRoutes = require('./routes/users')
+	//const userRoutes = require('./routes/users')
 
 	//[SECTION] Environment Setup
 	dotenv.config();
@@ -16,10 +16,10 @@
 	//[SECTION] Database Connection
 	mongoose.connect(account)
 	const connectStatus = mongoose.connection
-	connectStatus.once('open', () => console.log(`Database Connected`));
+	connectStatus.once('open', () => console.log(`Database Connected!`));
 
 	//[SECTION] Backend Routes
-	app.use('/users', userRoutes);
+	//app.use('/users', userRoutes);
 
 	//[SECTION] Server Gateway Respose
 	app.get('/', (req, res) => {
