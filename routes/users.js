@@ -10,8 +10,8 @@
 		console.log(req.body);
 		let userData = req.body;
 		
-		controller.register(userData).then(outCome => {
-			res.send(outCome)
+		controller.register(userData).then(outcome => {
+			res.send(outcome)
 		})
 	});
 
