@@ -2,7 +2,7 @@
 	const express = require('express');
 	const mongoose = require('mongoose');
 	const dotenv = require('dotenv');
-	const userRoutes = require('./routes/users');
+	//const userRoutes = require('./routes/users');
 
 //[SECTION] Environment Setup
 	dotenv.config();
@@ -19,11 +19,11 @@
 	connectStatus.once('open', () => console.log(`Database Connected`));
 
 //[SECTION] Backend Routes
-	appj.use('/users', userRoutes);
+	//appj.use('/users', userRoutes);
 
 //[SECTION] Server Gateway Respose
 	appj.get('/', (req, res) => {
-		res.send('Welcome to Ecommers JBro')
+		res.send('Welcome to Ecommers JJBro')
 	});
 
 	appj.listen(port, () => {
