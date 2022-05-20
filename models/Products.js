@@ -19,15 +19,12 @@
 		isActive: {
 			type: Boolean,
 			default: true
-		},
-		createdOn: [
-			{
-				createdOn: {
-					type: Date,
-					default: new Date()
-				}
-			}
-		]
+		}, 
+		createdOn: {
+			type: Date,
+			default: new Date()
+		}
+			
 	})
 
 // [SECTION] Model

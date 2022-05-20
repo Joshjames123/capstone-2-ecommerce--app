@@ -8,12 +8,12 @@
 				type: Number,
 				required: [true, 'is Required']
 			},
-			createdOn: [
+			purchasedOn: {
+				type: Date,
+				default: new Date()
+			},
+			orderDetails: [
 				{
-					purchasedOn: {
-						type: Date,
-						default: new Date()
-					},
 					{
 						userName: String,
 						required: [true, 'userName is Required']
