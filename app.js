@@ -4,24 +4,24 @@
 	const dotenv = require('dotenv');
 	const userRoutes = require('./routes/users')
 
-	//[SECTION] Environment Setup
+//[SECTION] Environment Setup
 	dotenv.config();
 	let account = process.env.CREDENTIALS;
 	const port = process.env.PORT;
 
-	//[SECTION] Server Setup
+//[SECTION] Server Setup
 	const app = express();
 	app.use(express.json());
-
-	//[SECTION] Database Connection
+	
+//[SECTION] Database Connection
 	mongoose.connect(account)
 	const connectStatus = mongoose.connection
-	connectStatus.once('open', () => console.log(`Database Connected!`));
+	connectStatus.once('open', () => console.log(`Database Connected`));
 
-	//[SECTION] Backend Routes
+//[SECTION] Backend Routes
 	app.use('/users', userRoutes);
 
-	//[SECTION] Server Gateway Respose
+//[SECTION] Server Gateway Respose
 	app.get('/', (req, res) => {
 		res.send('Welcome to Ecommers JBro')
 	});
