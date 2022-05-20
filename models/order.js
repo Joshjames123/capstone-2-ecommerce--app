@@ -3,7 +3,7 @@
 
 // [SECTION] Schema/Blueprint
 
-	const productSchema = new mongoose.Schema({
+	const ordersSchema = new mongoose.Schema({
 			totalAmount: {
 				type: Number,
 				required: [true, 'is Required']
@@ -27,4 +27,4 @@
 		})
 
 // [SECTION] Model
-	module.exports = mongoose.model('User', orderSchema);
+	module.exports = mongoose.model('Order', orderSchema);
