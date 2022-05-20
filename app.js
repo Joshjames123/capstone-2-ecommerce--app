@@ -1,4 +1,4 @@
-//[SECTION] Dependencies and Modules
+//[SECTION] *Dependencies and Modules*
 	const express = require('express');
 	const mongoose = require('mongoose');
 	const dotenv = require('dotenv');
