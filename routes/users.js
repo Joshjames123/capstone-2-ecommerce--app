@@ -1,6 +1,6 @@
 //[SECTIONS] Dependencies and Modules
 	const exp = require('express');
-	//const controller = require('../controller/users');
+	const controller = require('../controller/users');
 
 //[SECTIONS] Routing Component
 	const route = exp.Router();
