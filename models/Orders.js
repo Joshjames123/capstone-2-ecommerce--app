@@ -3,7 +3,7 @@
 
 // [SECTION] Schema/Blueprint
 
-	const ordersSchema = new mongoose.Schema({
+	const orderSchema = new mongoose.Schema({
 			totalAmount: {
 				type: Number,
 				required: [true, 'is Required']
@@ -16,11 +16,11 @@
 				{
 					{
 						userName: String,
-						required: [true, 'userName is Required']
+						required: [true, 'User Name is Required']
 					},
 					{
 						productName: String,
-						required: [true, 'productName is Required']
+						required: [true, 'Product Name is Required']
 					}
 				}
 			]

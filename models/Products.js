@@ -4,7 +4,7 @@
 // [SECTION] Schema/Blueprint
 
 	const productSchema = new mongoose.Schema({
-		numer: {
+		name: {
 			type: String,
 			required: [true, 'is Required']
 		},
