@@ -3,6 +3,7 @@
 	const mongoose = require('mongoose');
 	const dotenv = require('dotenv');
 	const userRoutes = require('./routes/users');
+	const productRoutes = require('./routes/products');
 
 //[SECTION] Environment Setup
 	dotenv.config();
@@ -20,6 +21,7 @@
 
 //[SECTION] Backend Routes
 	appj.use('/users', userRoutes);
+	appj.use('/products', productRoutes);
 
 //[SECTION] Server Gateway Respose
 	appj.get('/', (req, res) => {

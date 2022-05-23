@@ -8,7 +8,7 @@
 			type: String,
 			required: [true, 'is Required']
 		},
-		discription: {
+		description: {
 			type: String,
 			required: [true, 'is Required']
 		},
