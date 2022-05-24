@@ -4,7 +4,7 @@
 	const dotenv = require('dotenv');
 	const userRoutes = require('./routes/users');
 	const productRoutes = require('./routes/products');
-	const orderRoutes = require('./routes/orders');
+	
 
 //[SECTION] Environment Setup
 	dotenv.config();
@@ -23,8 +23,8 @@
 //[SECTION] Backend Routes
 	appj.use('/users', userRoutes);
 	appj.use('/products', productRoutes);
-	appj.use('/orders', orderRoutes);
-
+	
+	
 //[SECTION] Server Gateway Respose
 	appj.get('/', (req, res) => {
 		res.send('Welcome to Ecommers JJBro')

@@ -56,16 +56,27 @@ module.exports.loginUser = (data) => {
 }
 
 
-
+//Non-admin User Checkout (create order)
 module.exports.orders = async (req,res) => {
-	//console.log("test enroll route");
-	console.log(req.user.id); // the user's id from the decoded token after verify()
-	console.log(req.body.courseId); // the course ID from our request body
 
-	//Process stops here and sends respose if user an admin
 	if(req.user.isAdmin) {
 		return res.send({message: "Action Forbidden"})
 	}
 
+	const userId = req.user.id
+	const products = req.body.products
+	let total = 0
 
+	for(let product of products){
+		const found = await Product.findById(product.productId)
+		total += found.price*product.quantity
+	}
+
+	const order = new Order({
+		userId,
+		products,
+		totalAmount: total
+	})
+	await order.save()
+	res.send(true)
 }

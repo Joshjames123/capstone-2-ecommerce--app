@@ -12,7 +12,7 @@
 			products: [
 						{
 							productId: {
-								type: String,
+								type: mongoose.ObjectId,
 								required: [true, 'is Required']
 							},
 							quantity: {
