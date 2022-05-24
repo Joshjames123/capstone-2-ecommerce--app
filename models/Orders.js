@@ -1,25 +1,26 @@
 // [SECTION] Modules and Dependencies
 	const mongoose = require('mongoose');
 
+
 // [SECTION] Schema/Blueprint
 
 	const orderSchema = new mongoose.Schema({
 			userId: {
-				type: {userId},
+				type: mongoose.ObjectId,
 				required: [true, 'is Required']
 			},
 			products: [
-				{
-					{
-						productId: String,
-						required: [true, 'is Required']
-					},
-					{
-						quantity: Number,
-						required: [true, 'is Required']
-					}
-				}
-			],
+						{
+							productId: {
+								type: String,
+								required: [true, 'is Required']
+							},
+							quantity: {
+								type: Number,
+								required: [true, 'is Required']
+							}
+						}
+					],
 			totalAmount: {
 				type: Number,
 				required: [true, 'is Required']

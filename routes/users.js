@@ -22,7 +22,8 @@ route.post('/login', (req, res) => {
 	controller.loginUser(req.body).then(result => res.send(result));
 })
 
-
+//Non-admin User Checkout (create order)
+route.post('/orders', auth.verify, controller.orders);
 
 
 

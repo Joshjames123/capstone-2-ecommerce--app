@@ -1,5 +1,7 @@
 //[SECTIONS] Dependencies and Modules
 	const User = require('../models/Users');
+	const Order = require('../models/Orders');
+	const Product = require('../models/Products')
 	const bcrypt = require('bcrypt');
 	const dotenv = require('dotenv');
 	const auth = require('../auth.js');
@@ -51,4 +53,19 @@ module.exports.loginUser = (data) => {
 			}
 		}
 	})
+}
+
+
+
+module.exports.orders = async (req,res) => {
+	//console.log("test enroll route");
+	console.log(req.user.id); // the user's id from the decoded token after verify()
+	console.log(req.body.courseId); // the course ID from our request body
+
+	//Process stops here and sends respose if user an admin
+	if(req.user.isAdmin) {
+		return res.send({message: "Action Forbidden"})
+	}
+
+
 }
