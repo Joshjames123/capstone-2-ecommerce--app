@@ -20,12 +20,28 @@
 //[SECTTION] Route for User Authentication(login)
 route.post('/login', (req, res) => {
 	controller.loginUser(req.body).then(result => res.send(result));
-})
+});
+
 
 //Non-admin User Checkout (create order)
 route.post('/orders', auth.verify, controller.orders);
 
 
+//Set user as admin (admin only) ========STRETCH GOAL========
+route.put('/:userId', auth.verify, auth.verifyAdmin, (req, res) => {
+	controller.updateIsAdmin(req.params.userId, req.body).then(result => res.send(result));
+});
+
+
+//Retrive authenticated user's order ========STRETCH GOAL========
+route.get('/userOrder', auth.verify, controller.getUserOrder);
+
+
+
+//Retrive all orders (admin only) ========STRETCH GOAL========
+route.get('/allOrders', auth.verify, auth.verifyAdmin, (req, res) => {
+	controller.getAllOrders().then(result => res.send(result));
+})
 
 
 

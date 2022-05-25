@@ -80,3 +80,40 @@ module.exports.orders = async (req,res) => {
 	await order.save()
 	res.send(true)
 }
+
+
+
+//Set user as admin (admin only) ========STRETCH GOAL========
+module.exports.updateIsAdmin = (userId, data) => {
+
+	let updatedUser = {
+		isAdmin: data.isAdmin
+	}
+
+	return User.findByIdAndUpdate(userId, updatedUser).then((user, error) => {
+		if(error){
+			return false;
+		} else {
+			return true;
+		}
+	}).catch(error => error)
+};
+
+
+//Retrive authenticated user's order ========STRETCH GOAL========
+module.exports.getUserOrder = (req, res) => {
+	Order.find({ 'userId' : req.user.id })
+	.then(result => {
+		res.send(result)
+	})
+	.catch(err => res.send(err))
+}
+
+
+
+//Retrive all orders (admin only) ========STRETCH GOAL========
+module.exports.getAllOrders = () => {
+	return Order.find({}).then(result => {
+		return result;
+	})
+}
