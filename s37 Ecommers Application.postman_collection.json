@@ -1,0 +1,372 @@
+{
+	"info": {
+		"_postman_id": "79f36fa5-8497-49c4-890e-8356144128be",
+		"name": "s37 Ecommers Application",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20341226"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "user/register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"herokufinal@mail.com\",\r\n    \"password\": \"pass123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{heroku}}users/register",
+							"host": [
+								"{{heroku}}users"
+							],
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user/login-autentication",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"herokufinal@mail.com\",\r\n    \"password\": \"pass123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{heroku}}users/login",
+							"host": [
+								"{{heroku}}users"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOGRhZjhkZjJmYWYxNjVkN2RmZGM2MyIsImVtYWlsIjoiaGVyb2t1ZmluYWxAbWFpbC5jb20iLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNjUzNDUyNzEwfQ.MwSN889mp-PETD8J-ArVq4YGoTIy87DuBkRTPNSnPkM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"products\": [\r\n        {\r\n            \"productId\": \"628dab36a2d3455e91e81f26\",\r\n            \"quantity\": 1\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{heroku}}users/orders",
+							"host": [
+								"{{heroku}}users"
+							],
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "createProduct",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOGI3ZjkyZDE4YjBhNTg5MzVkMzFhMCIsImVtYWlsIjoiYWRtaW5AbWFpbC5jb20iLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2NTMzMTIyMzJ9.LDFMCcdI6Qq9-6Xf0TdFpuwTlK63RdRdONlv0eHyeq4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Razer Kraken X 7.1\",\r\n    \"description\": \"Gaming Headset\",\r\n    \"price\": 2500\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{heroku}}products/create",
+							"host": [
+								"{{heroku}}products"
+							],
+							"path": [
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "all active product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{heroku}}products/active",
+							"host": [
+								"{{heroku}}products"
+							],
+							"path": [
+								"active"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "singel product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{heroku}}products/:productId",
+							"host": [
+								"{{heroku}}products"
+							],
+							"path": [
+								":productId"
+							],
+							"variable": [
+								{
+									"key": "productId",
+									"value": "628db07bf2faf165d7dfdc6a"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Product info",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOGI3ZjkyZDE4YjBhNTg5MzVkMzFhMCIsImVtYWlsIjoiYWRtaW5AbWFpbC5jb20iLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2NTMzMTQyOTd9.B6kd58x69ZxuXXBbdmCP-qEMUD6WU5c3RQU2fJeXju4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Razer Kraken X 7.1\",\r\n    \"description\": \"Gaming Headset Updated\",\r\n    \"price\": 2600\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{heroku}}products/:productId",
+							"host": [
+								"{{heroku}}products"
+							],
+							"path": [
+								":productId"
+							],
+							"variable": [
+								{
+									"key": "productId",
+									"value": "628db07bf2faf165d7dfdc6a"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "archive product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOGI3ZjkyZDE4YjBhNTg5MzVkMzFhMCIsImVtYWlsIjoiYWRtaW5AbWFpbC5jb20iLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2NTM0NDAzMjR9.YooA8wDzTzsmUxgC7Z2NGtdpwKYR7ThBmbnQ4Ly072k",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{heroku}}products/628db07bf2faf165d7dfdc6a/archive",
+							"host": [
+								"{{heroku}}products"
+							],
+							"path": [
+								"628db07bf2faf165d7dfdc6a",
+								"archive"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Stretch  Goal",
+			"item": [
+				{
+					"name": "User as admin (admin only)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOGI3ZjkyZDE4YjBhNTg5MzVkMzFhMCIsImVtYWlsIjoiYWRtaW5AbWFpbC5jb20iLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2NTM0NDA1ODh9.RtF4ttO2yHdaFvj1RKLKZrLJaOdqJYWTUtFSZ_HOs4s",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"isAdmin\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{heroku}}users/:userId",
+							"host": [
+								"{{heroku}}users"
+							],
+							"path": [
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "628daf8df2faf165d7dfdc63"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "all orders (admin only)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOGI3ZjkyZDE4YjBhNTg5MzVkMzFhMCIsImVtYWlsIjoiYWRtaW5AbWFpbC5jb20iLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2NTM0NDM2NDV9.KdJ2M8_YDt7ECzv5wByzfUFAnCAfqVIUZje8J_15WOQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{heroku}}users/allOrders",
+							"host": [
+								"{{heroku}}users"
+							],
+							"path": [
+								"allOrders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "auth user order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOGI3OWE5YjM4YjMzZDc4ZmFlNjRiZiIsImVtYWlsIjoiamFtZXNAbWFpbC5jb20iLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNjUzNDUyMDE3fQ.7isGsUWK-0GlZBEqyzwk08G708Rge9hwHtDcWQmpunI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{heroku}}users/userOrder",
+							"host": [
+								"{{heroku}}users"
+							],
+							"path": [
+								"userOrder"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "gateway-ecommers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{heroku}}",
+					"host": [
+						"{{heroku}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
