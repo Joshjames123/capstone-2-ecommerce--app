@@ -21,6 +21,12 @@ module.exports.addProduct = (reqBody) => {
 
 };
 
+module.exports.getAllProduct = () => {
+	return Product.find({}).then(result => {
+		return result;
+	})
+}
+
 
 
 //Retrive all ACTIVE courses
@@ -75,3 +81,22 @@ module.exports.archiveProduct = (productId) => {
 			}
 		}).catch(error => error)
 }
+
+
+
+module.exports.activateProduct = (productId) => {
+	let updateActiveField = {
+		isActive: true
+	};
+
+	return Product.findByIdAndUpdate(productId, updateActiveField).then((course, error) => {
+
+			if(error){
+				return false;
+			} else {
+				return true;
+			}
+		}).catch(error => error)
+}
+
+

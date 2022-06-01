@@ -14,14 +14,18 @@
 //[SECTIONS] Functionalities [CREATE]
 	//1. Register New Account
 	module.exports.register = (userData) => {
+		let fName = userData.firstName;
+		let lName = userData.lastName;
 		let email = userData.email;
 		let passW = userData.password;
-		let isAd = userData.isAdmin;
+		let mobil = userData.mobileNo;
 
 		let newUser = new User({
+			firstName: fName,
+			lastName: lName,
 			email: email,
 			password: bcrypt.hashSync(passW, salt),
-			isAdmin: isAd
+			mobileNo: mobil
 		})
 		
 		return newUser.save().then((user, err) => {
@@ -114,6 +118,14 @@ module.exports.getUserOrder = (req, res) => {
 //Retrive all orders (admin only) ========STRETCH GOAL========
 module.exports.getAllOrders = () => {
 	return Order.find({}).then(result => {
+		return result;
+	})
+}
+
+
+module.exports.getProfile = (data) => {
+	return User.findById(data).then(result => {
+		result.password = '';
 		return result;
 	})
 }

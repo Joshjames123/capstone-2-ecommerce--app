@@ -4,6 +4,7 @@
 	const dotenv = require('dotenv');
 	const userRoutes = require('./routes/users');
 	const productRoutes = require('./routes/products');
+	const cors = require('cors');
 	
 
 //[SECTION] Environment Setup
@@ -14,6 +15,7 @@
 //[SECTION] Server Setup
 	const appj = express();
 	appj.use(express.json());
+	appj.use(cors())
 	
 //[SECTION] Database Connection
 	mongoose.connect(account)

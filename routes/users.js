@@ -43,6 +43,11 @@ route.get('/allOrders', auth.verify, auth.verifyAdmin, (req, res) => {
 	controller.getAllOrders().then(result => res.send(result));
 })
 
+route.get('/details', auth.verify, (req, res) => {
+	controller.getProfile(req.user.id).then(result => res.send(result));
+})
+
+
 
 
 //[SECTIONS] Expose Route System

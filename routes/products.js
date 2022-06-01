@@ -10,6 +10,9 @@ route.post('/create', verify, verifyAdmin, (req, res) => {
 	ProductController.addProduct(req.body).then(result => res.send(result))
 });
 
+route.get('/all', (req, res) => {
+	ProductController.getAllProduct().then(result => res.send(result));
+})
 
 
 //Retrive all ACTIVE Product (user or not user)
@@ -32,6 +35,11 @@ route.put('/:productId', verify, verifyAdmin, (req, res) => {
 //Archiving Product (admin only)
 route.put('/:productId/archive', verify, verifyAdmin, (req, res) => {
 	ProductController.archiveProduct(req.params.productId).then(result => res.send(result));
+})
+
+//Archiving a course
+route.put('/:productId/activate', verify, verifyAdmin, (req, res) => {
+	ProductController.activateProduct(req.params.productId).then(result => res.send(result));
 })
 
 
