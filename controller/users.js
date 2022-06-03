@@ -2,6 +2,7 @@
 	const User = require('../models/Users');
 	const Order = require('../models/Orders');
 	const Product = require('../models/Products')
+	const Cart = require('../models/Carts')
 	const bcrypt = require('bcrypt');
 	const dotenv = require('dotenv');
 	const auth = require('../auth.js');
@@ -82,7 +83,7 @@ module.exports.orders = async (req,res) => {
 		totalAmount: total
 	})
 	await order.save()
-	res.send(true)
+	res.send(order)
 }
 
 
@@ -129,3 +130,32 @@ module.exports.getProfile = (data) => {
 		return result;
 	})
 }
+
+//Non-admin User addToCart
+module.exports.addToCart = async (req,res) => {
+
+	if(req.user.isAdmin) {
+		return res.send({message: "Action Forbidden"})
+	}
+
+	const userId = req.user.id
+	const products = req.body.products
+	let total = 0
+
+	for(let product of products) {
+		const found = await Product.findById(product.productId)
+		total += found.price * product.quantity
+	}
+
+	const cart = new Cart({
+		userId,
+		products,
+		totalAmount: total
+	})
+	await cart.save()
+	res.send(true)
+}
+
+
+
+

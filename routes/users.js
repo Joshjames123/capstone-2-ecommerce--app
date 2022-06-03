@@ -48,6 +48,10 @@ route.get('/details', auth.verify, (req, res) => {
 })
 
 
+//Non-admin User addToCart
+route.post('/cart', auth.verify, controller.addToCart);
+
+
 
 
 //[SECTIONS] Expose Route System

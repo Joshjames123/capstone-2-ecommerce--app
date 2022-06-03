@@ -37,7 +37,7 @@ route.put('/:productId/archive', verify, verifyAdmin, (req, res) => {
 	ProductController.archiveProduct(req.params.productId).then(result => res.send(result));
 })
 
-//Archiving a course
+//Activate a Product
 route.put('/:productId/activate', verify, verifyAdmin, (req, res) => {
 	ProductController.activateProduct(req.params.productId).then(result => res.send(result));
 })
