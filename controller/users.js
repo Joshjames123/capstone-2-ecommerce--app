@@ -157,5 +157,16 @@ module.exports.addToCart = async (req,res) => {
 }
 
 
+//Add to Cart
+module.exports.myCartController = async (req, res) => {
+
+	if(req.user.isAdmin) {
+		return res.send({message: "Action Forbidden"})
+	}
+
+	return Cart.find({ 'userId' : req.params.userId })
+	.populate('products.productId')
+
+}
 
 

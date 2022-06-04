@@ -12,8 +12,9 @@
 			products: [
 						{
 							productId: {
-								type: mongoose.ObjectId,
-								required: [true, 'is Required']
+								type: mongoose.Schema.Types.ObjectId,
+								required: [true, 'is Required'],
+								ref: 'Product'
 							},
 							quantity: {
 								type: Number,

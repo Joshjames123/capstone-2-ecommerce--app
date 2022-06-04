@@ -51,6 +51,14 @@ route.get('/details', auth.verify, (req, res) => {
 //Non-admin User addToCart
 route.post('/cart', auth.verify, controller.addToCart);
 
+//Add to Cart
+route.get('/myCart/:userId', auth.verify, (req, res) => {
+	controller.myCartController(req, res).then(result => res.send(result));
+})
+
+
+
+
 
 
 

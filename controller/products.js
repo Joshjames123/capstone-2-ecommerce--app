@@ -29,7 +29,7 @@ module.exports.getAllProduct = () => {
 
 
 
-//Retrive all ACTIVE courses
+//Retrive all ACTIVE product
 
 module.exports.getAllActive = () => {
 	return Product.find({ isActive: true}).then(result => {
