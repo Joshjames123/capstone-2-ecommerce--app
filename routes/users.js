@@ -57,8 +57,16 @@ route.get('/myCart/:userId', auth.verify, (req, res) => {
 })
 
 
+//
+route.delete("/deleteCart/:cartId", auth.verify, (req, res) => {
+	let cartId = req.params.cartId;
+	controller.deleteCart(cartId).then(result => res.send(result));
+});
 
-
+//My Order History
+route.get('/myOrder/:userId', auth.verify, (req, res) => {
+	controller.myOrderController(req, res).then(result => res.send(result));
+})
 
 
 

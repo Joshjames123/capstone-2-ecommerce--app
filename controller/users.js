@@ -83,6 +83,8 @@ module.exports.orders = async (req,res) => {
 		totalAmount: total
 	})
 	await order.save()
+
+	await Cart.deleteMany({userId})
 	res.send(order)
 }
 
@@ -169,4 +171,20 @@ module.exports.myCartController = async (req, res) => {
 
 }
 
+//
+module.exports.deleteCart = (id) => {
+		return Cart.findByIdAndRemove(id)
+	};
 
+
+//
+module.exports.myOrderController = async (req, res) => {
+
+	if(req.user.isAdmin) {
+		return res.send({message: "Action Forbidden"})
+	}
+
+	return Order.find({ 'userId' : req.params.userId })
+	.populate('products.productId')
+
+}
