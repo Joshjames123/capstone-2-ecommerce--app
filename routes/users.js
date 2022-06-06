@@ -8,7 +8,7 @@
 
 //[SECTIONS] Routes- POST
 	route.post('/register', (req, res) => {
-		//console.log(req.body);
+		
 		let userData = req.body;
 		
 		controller.register(userData).then(outcome => {

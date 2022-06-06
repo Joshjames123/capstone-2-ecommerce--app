@@ -23,7 +23,7 @@ route.get('/active', (req, res) => {
 
 //Retriveing a single Product
 route.get('/:productId', (req, res) => {
-	console.log(req.params.productId)
+	
 	ProductController.getProduct(req.params.productId).then(result => res.send(result));
 });
 
